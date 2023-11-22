@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        /* Your CSS styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.4s, color 0.4s;
+            position: relative;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #f2f2f2;
+        }
+
+        .login-container {
+            text-align: center;
+            width: 300px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ff4d4d; /* Red login container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            margin-bottom: 16px;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        body.dark-mode input[type="text"],
+        body.dark-mode input[type="password"] {
+            background-color: #121212; /* Dark mode input background */
+            color: #f2f2f2;
+        }
+
+        input[type="text"] {
+            border-color: #2196F3; /* Blue border */
+        }
+
+        input[type="password"] {
+            border-color: #ff4d4d; /* Red border */
+        }
+
+        button {
+            width: calc(100% - 20px);
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0e81d1;
+        }
+
+        /* Toggle Button */
+        .dark-mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ccc;
+            width: 40px;
+            height: 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+            justify-content: flex-start;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-handle {
+            width: 16px;
+            height: 16px;
+            background-color: #fff;
+            border-radius: 50%;
+            transform: translateX(2px);
+            transition: transform 0.3s ease;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background-color: #666;
+        }
+
+        body.dark-mode .toggle-handle {
+            transform: translateX(22px);
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <div class="toggle-handle"></div>
+    </div>
+    <div class="login-container">
+        <h2>Staff Docs Login</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            <br>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                localStorage.setItem('token', data.token);
+                window.location.href = 'staffdoc.html';
+            })
+            .catch(error => {
+                console.error('Login failed:', error);
+                alert('Login failed. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

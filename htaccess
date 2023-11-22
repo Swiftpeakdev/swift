@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Restricted Area"
+AuthUserFile C:/xampp/htdocs/Swiftdocs/.htpasswd
+Require valid-user

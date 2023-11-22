@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SwiftPeakHosting Client Docs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            transition: background-color 0.4s, color 0.4s;
+            color: #333;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .toggle-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .toggle-label {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .toggle-checkbox {
+            display: none;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: #fff;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        .welcome-message {
+            margin-top: 20px;
+        }
+
+        .documentation {
+            padding: 20px;
+        }
+
+        /* Styles for Chat Support Button */
+        .chat-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .chat-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-button a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <header>
+        <h1>Welcome to SwiftPeakHosting Client Docs</h1>
+        <div class="toggle-container">
+            <label class="toggle-label">
+                <input type="checkbox" class="toggle-checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </header>
+    
+    <section class="documentation">
+        <div class="welcome-message">
+            <p>
+                coming soon last edit 22/11/2023
+            </p>Welcome to the SwiftPeakHosting client documentation hub, your go-to resource for essential information and valuable resources. Stay tuned for the latest updates, coming soon. Last updated on 22/11/2023.
+        </div>
+
+        <!-- One-click Chat Support Link -->
+        <div class="chat-button">
+            <a href="coming_soon.html" onclick="openChatSupport(event)">Chat Support</a>
+        </div>
+    </section>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function openChatSupport(event) {
+            // Prevent the default action of link navigation
+            event.preventDefault();
+
+            // Redirect to the chat support form
+            window.location.href = "coming_soon.html";
+        }
+    </script>
+</body>
+</html>

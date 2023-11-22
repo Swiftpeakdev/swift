@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SwiftPeakHosting Docs</title>
+    <style>
+        /* Your CSS styles */
+        /* ... */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #f2f2f2;
+        }
+
+        header {
+            /* Your header styles */
+            /* ... */
+        }
+
+        /* Your other styles */
+
+        /* Dark mode toggle styles */
+        .toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+        .toggle-label {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .toggle-checkbox {
+            display: none;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: #fff;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Logout button styles */
+        .logout-btn {
+            /* Your logout button styles */
+            /* ... */
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Check if the user is logged in
+        function checkLoggedIn() {
+            // Assuming a basic form of authentication with a stored 'isLoggedIn' flag in localStorage
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            if (!isLoggedIn) {
+                // Redirect the user to the login page if not logged in
+                window.location.href = 'loginpage.html';
+            }
+        }
+
+        window.onload = function() {
+            checkLoggedIn(); // Check login status when the page loads
+        };
+
+        function logout() {
+            // Clear the isLoggedIn flag from localStorage on logout
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'loginpage.html'; // Redirect to login page after logout
+        }
+    </script>
+
+    <header>
+        <!-- Your header content -->
+        <!-- ... -->
+        <div>
+            <a href="#" class="logout-btn" onclick="logout()">Logout</a>
+        </div>
+        <div class="toggle-container">
+            <label class="toggle-label">
+                <input type="checkbox" class="toggle-checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </header>
+    
+    <section>
+        <!-- Your section content -->
+        <!-- ... -->
+    </section>
+
+    <footer>
+        <!-- Your footer content -->
+        <!-- ... -->
+    </footer>
+</body>
+</html>
